@@ -1,0 +1,14 @@
+class Solution(object):
+    def permute(self, nums):
+        res = []
+        def dfs(path,unused):
+            if not unused:
+                res.append(path)
+                return
+            for i in range(len(unused)):
+                dfs(path + [unused[i]], unused[:i]+unused[i+1:])
+        dfs([], nums)
+        return res
+if __name__=="__main__":
+    sol = Solution()
+    print(sol.permute([1, 2, 3]))
