@@ -1,0 +1,5 @@
+class Solution:
+    def generateTrees(self,n:int) -> List[Optional[TreeNode]]:
+        def gen(s,e):
+            return[None]if s>e else [TreeNode(v,l,r) for v in range(s,e+1) for l in gen(s,v-1) for r in gen(v+1,e)]
+        return gen(1,n) if n else []
